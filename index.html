@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meetup Location Optimizer</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h1>Meetup Optimizer</h1>
+        <p class="subtitle">Find the best spot for everyone</p>
+      </div>
+
+      <!-- Add participant form -->
+      <div class="section">
+        <h2>Add Participant</h2>
+        <div class="form-group">
+          <input type="text" id="input-name" placeholder="Name" autocomplete="off" />
+        </div>
+        <div class="form-group">
+          <input type="text" id="input-address" placeholder="Address or city" autocomplete="off" />
+        </div>
+        <button id="btn-add" class="btn btn-primary">
+          <span class="btn-icon">+</span> Add
+        </button>
+        <div id="geocode-status" class="status-msg"></div>
+      </div>
+
+      <!-- Participants list -->
+      <div class="section">
+        <h2>Participants <span id="participant-count" class="badge">0</span></h2>
+        <ul id="participant-list" class="participant-list">
+          <li class="empty-state">No participants yet. Add someone above.</li>
+        </ul>
+      </div>
+
+      <!-- Find button -->
+      <div class="section">
+        <button id="btn-find" class="btn btn-success" disabled>
+          Find Optimal Meetup Spot
+        </button>
+      </div>
+
+      <!-- Results -->
+      <div id="results-section" class="section hidden">
+        <h2>Optimal Meeting Point</h2>
+        <div id="optimal-address" class="optimal-address">
+          <div class="spinner"></div>
+        </div>
+        <div id="distance-summary" class="distance-summary"></div>
+      </div>
+
+      <!-- Nearby venues -->
+      <div id="venues-section" class="section hidden">
+        <h2>Nearby Venues <span id="venues-count" class="badge">0</span></h2>
+        <p class="venues-subtitle">Cafes &amp; restaurants within 500m</p>
+        <ul id="venues-list" class="venues-list"></ul>
+      </div>
+    </aside>
+
+    <!-- Map -->
+    <main class="map-container">
+      <div id="map"></div>
+      <div id="map-overlay" class="map-overlay">
+        <span>Add at least 2 participants to find the optimal meetup spot</span>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
